@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw Setup - Inbox Optin Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --navy: #0f172a;
+            --navy-light: #1e293b;
+            --accent: #dc2626;
+            --accent-hover: #b91c1c;
+            --text: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --bg: #ffffff;
+            --bg-secondary: #f8fafc;
+            --border: #e2e8f0;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+        
+        /* HEADER */
+        .header {
+            background: var(--navy);
+            padding: 20px 24px;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+        
+        /* HERO */
+        .hero {
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: #ffffff;
+            padding: 100px 24px 80px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(220, 38, 38, 0.2);
+            border: 1px solid var(--accent);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 32px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(40px, 5vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(18px, 2.5vw, 22px);
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--accent);
+            color: #ffffff;
+            padding: 18px 36px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .hero-cta:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+        
+        /* MAIN */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 16px;
+            color: var(--navy);
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        /* PACKAGES */
+        .packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 64px;
+        }
+        
+        .package {
+            background: var(--bg);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 40px 32px;
+            position: relative;
+            transition: all 0.2s;
+        }
+        
+        .package:hover {
+            border-color: var(--navy);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+        }
+        
+        .package.featured {
+            background: var(--navy);
+            color: #ffffff;
+            border-color: var(--navy);
+        }
+        
+        .package-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: #ffffff;
+            padding: 6px 18px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .package-name {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        
+        .package.featured .package-name {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .package-price {
+            font-size: 52px;
+            font-weight: 800;
+            color: var(--navy);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .package.featured .package-price {
+            color: #ffffff;
+        }
+        
+        .package-price span {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+        
+        .package.featured .package-price span {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .package-description {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .package.featured .package-description {
+            color: rgba(255, 255, 255, 0.7);
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .package-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+        
+        .package-features li {
+            padding: 10px 0;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .package.featured .package-features li {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .package-features li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px 24px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: #ffffff;
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+        
+        .btn-outline:hover {
+            background: var(--navy);
+            color: #ffffff;
+        }
+        
+        .package.featured .btn-outline {
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+        
+        .package.featured .btn-outline:hover {
+            background: #ffffff;
+            color: var(--navy);
+        }
+        
+        /* FORM */
+        .form-section {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 56px;
+        }
+        
+        .form-title {
+            font-size: 28px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 8px;
+            color: var(--navy);
+        }
+        
+        .form-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-section {
+                padding: 32px 24px;
+            }
+        }
+        
+        .form-group {
+            margin-bottom: 8px;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 15px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            transition: all 0.2s;
+            background: var(--bg);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--navy);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* GUARANTEE */
+        .guarantee {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 32px 0;
+        }
+        
+        .guarantee-icon {
+            font-size: 36px;
+            flex-shrink: 0;
+        }
+        
+        .guarantee-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 4px;
+        }
+        
+        .guarantee-content p {
+            font-size: 14px;
+            color: #047857;
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: var(--navy);
+            color: rgba(255, 255, 255, 0.5);
+            padding: 40px 24px;
+            text-align: center;
+        }
+        
+        .footer p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">Inbox Optin <span>Media</span></a>
+            <nav class="nav-links">
+                <a href="#plans">Plans</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">OpenClaw Setup Service</div>
+            <h1>Launch Your Offers in 37 Minutes</h1>
+            <p class="hero-subtitle">Get your AI-powered business operations running in 48 hours. We handle the technical setup so you can focus on growth.</p>
+            <a href="#plans" class="hero-cta">Get Started →</a>
+        </div>
+    </section>
+
+    <!-- MAIN -->
+    <main class="container">
+        <!-- PACKAGES -->
+        <section id="plans">
+            <h2 class="section-title">Choose Your Plan</h2>
+            <p class="section-subtitle">Self Setup gives you full control of your OpenClaw system</p>
+            
+            <div class="packages">
+                <div class="package">
+                    <div class="package-name">Self Setup</div>
+                    <div class="package-price">$229<span>/month</span></div>
+                    <p class="package-description">Monthly flexibility. Cancel anytime.</p>
+                    <ul class="package-features">
+                        <li>Complete OpenClaw installation</li>
+                        <li>Your own AI agent instance</li>
+                        <li>5 custom skills included</li>
+                        <li>Full tool integrations</li>
+                        <li>2-hour training session</li>
+                        <li>Monthly strategy call</li>
+                        <li>Email support</li>
+                    </ul>
+                    <button class="btn btn-outline">Choose Monthly</button>
+                </div>
+
+                <div class="package featured">
+                    <div class="package-badge">Save $360</div>
+                    <div class="package-name">Self Setup Yearly</div>
+                    <div class="package-price">$199<span>/mo</span></div>
+                    <p class="package-description">$2,388 billed yearly. Best value.</p>
+                    <ul class="package-features">
+                        <li>Everything in monthly plan</li>
+                        <li>2 months free</li>
+                        <li>Priority support</li>
+                        <li>Quarterly strategy sessions</li>
+                        <li>Early access to new features</li>
+                        <li>Custom skill development</li>
+                        <li>Direct Slack access</li>
+                    </ul>
+                    <button class="btn btn-outline">Choose Yearly</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORM -->
+        <section id="contact" class="form-section">
+            <h2 class="form-title">Get Started</h2>
+            <p class="form-subtitle">Fill out the form and we'll be in touch within 24 hours</p>
+            
+            <form>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="firstname">First Name</label>
+                        <input type="text" id="firstname" placeholder="John">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" placeholder="Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="john@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" placeholder="(555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" placeholder="Your Company">
+                    </div>
+                    <div class="form-group">
+                        <label for="plan">Plan</label>
+                        <select id="plan">
+                            <option>Select a plan</option>
+                            <option>Self Setup Monthly - $229/month</option>
+                            <option>Self Setup Yearly - $199/month (billed $2,388)</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Tell us about your project</label>
+                        <textarea id="message" placeholder="What are you looking to achieve with OpenClaw?"></textarea>
+                    </div>
+                </div>
+
+                <div class="guarantee">
+                    <div class="guarantee-icon">🛡️</div>
+                    <div class="guarantee-content">
+                        <h4>7-Day Money-Back Guarantee</h4>
+                        <p>Not satisfied with your setup? We'll refund your investment, no questions asked.</p>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="max-width: 400px; margin: 0 auto; display: flex;">Submit Request →</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 Inbox Optin Media. Questions? Email erikburton@agentmail.to</p>
+    </footer>
+</body>
+</html>
